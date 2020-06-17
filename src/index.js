@@ -67,14 +67,22 @@ const signup = (params) => {
 
 const onSubmit = async () => {
   await removeErrors()
+  let emailInput = document.getElementById('email');
+  let passwordInput = document.getElementById('password');
+  let usernameInput = document.getElementById('username');
+  let nameInput = document.getElementById('name');
+  let emailVal = emailInput.value;
+  let passwordVal = passwordInput.value;
+  let usernameVal = usernameInput.value;
+  let nameVal = nameInput.value;
   const params = {
-    email: 'メールアドレスの値',
-    password: 'パスワードの値',
-    username: 'ユーザー名の値',
-    name: '名前の値'
+    email: emailVal,
+    password: passwordVal,
+    username: usernameVal,
+    name: nameVal
   }
   const results = await validate(params);
-  if (true /* バリデーション成功時 */) {
+  if (results[0].success && results[1].success && results[2].success && results[3].success /* バリデーション成功時 */) {
     signup(params)
       .then((json) => {
         alert(json.message);
