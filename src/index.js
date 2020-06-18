@@ -92,6 +92,10 @@ const onSubmit = async () => {
       });
   } else {
     /* エラーメッセージを出力 */
+    addErrorMessage('email', res[0].message);
+    addErrorMessage('password', res[1].message);
+    addErrorMessage('username', res[2].message);
+    addErrorMessage('name', res[3].message);
   }
 }
 
