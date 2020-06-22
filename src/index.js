@@ -93,6 +93,7 @@ const onSubmit = async () => {
   } else {
     /* エラーメッセージを出力 */
     results.forEach((results) => {
+      alert(results.message);
       console.log(results);
     })
   }
