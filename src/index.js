@@ -93,11 +93,7 @@ const onSubmit = async () => {
   } else {
     /* エラーメッセージを出力 */
     results.forEach((result) => {
-      if (!result.success) {
-        addErrorMessage(result.message);
-        console.log(result);
-      }
-      return;
+      if (!result.success) addErrorMessage(result.type, result.message);
     })
   }
 }
