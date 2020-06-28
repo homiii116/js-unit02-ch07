@@ -16,13 +16,15 @@ export default class extends BaseValidator {
       });
   }
   _checkLength() {
-    if (this.val.length >= 8) {
+    const re = /^(?=.*[a-z0-9])(?=.*[A-Z])(?=.*[_\.@\-]).{8,}$/g;
+    const match = re.test(this.val);
+    if (match) {
       return Promise.resolve();
     } else {
       return Promise.reject({
         success: false,
         type: 'password',
-        message: 'パスワードが短すぎます。'
+        message: 'パスワードは8文字以上を設定してください。大文字のアルファベットと_-.@のいずれかの記号を1つ以上含めてください。'
       });
     }
   }

@@ -20,7 +20,8 @@ export default class extends BaseValidator {
       名前は必ず一つのスペースを含みます。
       名前には半角英数字のみが利用可能です。
     */
-    const re = /^[A-Z][A-Za-z]+\s+^[A-Z][A-Za-z]+$/i;
+    const re = /^(?=.*[A-Z])([a-zA-Z]*)+\s+(?=.*[A-Z])([a-zA-Z]*)$/g;
+
     const match = re.test(this.val);
     if (match) {
       return Promise.resolve();
