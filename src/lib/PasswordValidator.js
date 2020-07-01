@@ -28,7 +28,7 @@ export default class extends BaseValidator {
       return Promise.reject({
         success: false,
         type: this.type,
-        message: 'パスワードが短すぎます。'
+        message: `${this.typeName}が短すぎます。`
       });
     }
   }
@@ -48,7 +48,7 @@ export default class extends BaseValidator {
   } 
 
   _includeCapLetter() {
-    const re = /[A-Z]+/i;
+    const re = /[A-Z]+/;
     const match = re.test(this.val);
     if (match) {
       return Promise.resolve();

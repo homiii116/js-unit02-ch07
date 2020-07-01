@@ -26,8 +26,8 @@ export default class extends BaseValidator {
     } else {
       return Promise.reject({
         success: false,
-        type: 'username',
-        message: 'ユーザー名のフォーマットが異なります。'
+        type: this.type,
+        message: `${this.typeName}のフォーマットが異なります。`
       })
     }
   }

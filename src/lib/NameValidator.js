@@ -28,8 +28,8 @@ export default class extends BaseValidator {
     } else {
       return Promise.reject({
         success: false,
-        type: 'name',
-        message: '名前のフォーマットが異なります。'
+        type: this.type,
+        message: `${this.typeName}のフォーマットが異なります。`
       })
     }
   }
