@@ -7,10 +7,12 @@ import 'whatwg-fetch'
 const endpoint = "http://localhost:3000"
 
 const validate = (params) => {
-  const name = params.name;
-  const email = params.email;
-  const password = params.password;
-  const username = params.username;
+  const {
+    name,
+    email,
+    password,
+    username
+  } = params;
   const mailValidator = new MailValidator(email);
   const passwordValidator = new PasswordValidator(password);
   const nameValidator = new NameValidator(name)
@@ -71,15 +73,15 @@ const onSubmit = async () => {
   let passwordInput = document.getElementById('password');
   let usernameInput = document.getElementById('username');
   let nameInput = document.getElementById('name');
-  let emailVal = emailInput.value;
-  let passwordVal = passwordInput.value;
-  let usernameVal = usernameInput.value;
-  let nameVal = nameInput.value;
+  let email = emailInput.value;
+  let password = passwordInput.value;
+  let username = usernameInput.value;
+  let name = nameInput.value;
   const params = {
-    email: emailVal,
-    password: passwordVal,
-    username: usernameVal,
-    name: nameVal
+    email,
+    password,
+    username,
+    name
   }
   const results = await validate(params);
   if (results[0].success && results[1].success && results[2].success && results[3].success /* バリデーション成功時 */) {
@@ -102,4 +104,4 @@ const onSubmit = async () => {
   const submit = document.getElementById('submit');
   submit.addEventListener('click', onSubmit);
 }
-// 変更
+
