@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+    mode: 'development',
     entry: [
         'webpack-hot-middleware/client',
         './src/index.js'

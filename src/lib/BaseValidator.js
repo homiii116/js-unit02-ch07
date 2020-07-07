@@ -18,4 +18,16 @@ export default class {
       }
     });
   }
+
+  _errorResult(message) {
+    if (message) {
+      return resolve();
+    } else {
+      return reject({
+        success,
+        message,
+        type
+      })
+    }
+  }
 }
