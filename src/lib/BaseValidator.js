@@ -21,9 +21,9 @@ export default class {
 
   _errorResult(message) {
     if (message) {
-      return resolve();
+      return Promise.resolve();
     } else {
-      return reject({
+      return Promise.reject({
         success,
         message,
         type
