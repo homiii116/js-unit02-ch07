@@ -24,9 +24,9 @@ export default class {
       return Promise.resolve();
     } else {
       return Promise.reject({
-        success,
+        success: false,
         message,
-        type
+        type: this.type
       })
     }
   }
