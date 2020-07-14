@@ -25,11 +25,9 @@ export default class extends BaseValidator {
     if (this.val.length >= 8) {
       return Promise.resolve();
     } else {
-      return Promise.reject({
-        success: false,
-        type: this.type,
-        message: `${this.typeName}が短すぎます。`
-      });
+      const message = `${this.typeName}が短すぎます。`;
+      const errorMessage = super._errorResult(message);
+      return Promise.reject(errorMessage)
     }
   }
 
@@ -39,11 +37,9 @@ export default class extends BaseValidator {
     if (match) {
       return Promise.resolve();
     } else {
-      return Promise.reject({
-        success: false,
-        type: this.type,
-        message: '半角英数字と_.-@のみ使用可能です。'
-      })
+      const message = '半角英数字と_.-@のみ使用可能です。';
+      const errorMessage = super._errorResult(message);
+      return Promise.reject(errorMessage)
     }
   } 
 
@@ -53,11 +49,9 @@ export default class extends BaseValidator {
     if (match) {
       return Promise.resolve();
     } else {
-      return Promise.reject({
-        success: false,
-        type: this.type,
-        message: '大文字のアルファベットを1文字以上使用してください'
-      })
+      const message = '大文字のアルファベットを1文字以上使用してください';
+      const errorMessage = super._errorResult(message);
+      return Promise.reject(errorMessage)
     }
   }
 
@@ -67,11 +61,9 @@ export default class extends BaseValidator {
     if (match) {
       return Promise.resolve();
     } else {
-      return Promise.reject({
-        success: false,
-        type: this.type,
-        message: '_.-@のいずれかの記号を1文字以上使用してください'
-      })
+      const message = '_.-@のいずれかの記号を1文字以上使用してください';
+      const errorMessage = super._errorResult(message);
+      return Promise.reject(errorMessage)
     }
   }
 }

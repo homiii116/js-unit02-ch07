@@ -4,17 +4,15 @@ export default class {
     this.typeName = typeName;
     this.type = type;
     this.result = {};
+    this._cannotEmpty = this._cannotEmpty.bind(this);
+    this._errorResult = this._errorResult.bind(this);
   }
   _cannotEmpty() {
     return new Promise((resolve, reject) => {
       if (!!this.val) {
         resolve(this);
       } else {
-        reject({
-          success: false,
-          message: `${this.typeName}は必須です。`,
-          type: this.type
-        })
+        reject(this._errorResult(`${this.typeName}は必須です`))
       }
     });
   }
