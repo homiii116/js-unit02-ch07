@@ -4,8 +4,6 @@ export default class {
     this.typeName = typeName;
     this.type = type;
     this.result = {};
-    this._cannotEmpty = this._cannotEmpty.bind(this);
-    this._errorResult = this._errorResult.bind(this);
   }
   _cannotEmpty() {
     return new Promise((resolve, reject) => {
@@ -18,14 +16,10 @@ export default class {
   }
 
   _errorResult(message) {
-    if (message) {
-      return Promise.resolve();
-    } else {
-      return Promise.reject({
-        success: false,
-        message,
-        type: this.type
-      })
+    return {
+      success: false,
+      message,
+      type: this.type
     }
   }
 }

@@ -84,7 +84,9 @@ const onSubmit = async () => {
     name
   }
   const results = await validate(params);
-  if (results[0].success && results[1].success && results[2].success && results[3].success /* バリデーション成功時 */) {
+  console.log(results);
+  /* バリデーション成功時 */
+  if (results[0].success && results[1].success && results[2].success && results[3].success) {
     signup(params)
       .then((json) => {
         alert(json.message);
